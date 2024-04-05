@@ -21,9 +21,22 @@ const library = {
       name: "Other Playlist",
       tracks: ["t03"]
     }
-  }
+  },
+  printPlaylists: function() {
+    for (let playlistId in this.playlists) {
+      let playlist = this.playlists[playlistId];
+      console.log(`${playlistId}: ${playlist.name} - ${playlist.tracks.length} tracks`);
+    }
+  },
+  printTracks: function() {
+    for (let trackId in library.tracks) {
+      let tracks = library.tracks[trackId];
+      console.log(`${trackId}: ${tracks.name} by ${tracks. artist} (${tracks.album})`);
+    }
+  },
 };
-
+library.printPlaylists();
+library.printTracks();
 /////////////////////////////
 // FUNCTIONS TO IMPLEMENT:
 /////////////////////////////
@@ -89,14 +102,14 @@ const addTrack = function(name, artist, album) {
   return library;
 };
 
-console.log(addTrack("Thriller", "Michael Jackson", "Thriller"));
+//console.log(addTrack("Thriller", "Michael Jackson", "Thriller"));
 // adds a playlist to the library
 const addPlaylist = function(name) {
   const playlistId = generateUid();
   library.playlists[playlistId] = { id: playlistId, name, tracks: [] };
   return library;
 };
-console.log(addPlaylist("Sweet Summer Breeze"));
+//console.log(addPlaylist("Sweet Summer Breeze"));
 
 // STRETCH:
 // given a query string string, prints a list of tracks
